@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './index.css'
 import { AuthProvider } from "./context/AuthContext.jsx";
+import LandingPage from "./pages/LandingPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import Home from "./pages/Home.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -13,7 +14,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route
             element={
               <ProtectedRoute>

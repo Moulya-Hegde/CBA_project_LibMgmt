@@ -28,18 +28,14 @@ const Navbar = () => {
 
   const linkBase =
     "px-3 py-2 rounded-md text-sm font-medium transition transform duration-200";
-  const active = darkMode
-    ? "bg-yellow-400/10 text-yellow-300 scale-105"
-    : "bg-indigo-600/10 text-indigo-600 scale-105";
-  const inactive = darkMode
-    ? "text-gray-300 hover:text-white hover:scale-105"
-    : "text-gray-700 hover:text-indigo-700 hover:scale-105";
-
-  const navbarBg = darkMode ? "bg-gray-900 text-gray-100" : "bg-white text-gray-900";
-  const buttonBg = darkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-200 hover:bg-gray-300";
+  
+  const navbarStyle = darkMode ? {backgroundColor: '#3B2F2F', color: '#FAF3E0'} : {backgroundColor: '#FAF3E0', color: '#3B2F2F'};
+  const activeStyle = {backgroundColor: 'rgba(193,154,107,0.2)', color: '#C19A6B', transform: 'scale(1.05)'};
+  const inactiveStyle = darkMode ? {color: '#FAF3E0'} : {color: '#3B2F2F'};
+  const buttonStyle = {backgroundColor: 'rgba(193,154,107,0.2)'};
 
   return (
-    <header className={`${navbarBg} shadow-lg transition-colors duration-500`}>
+    <header className="shadow-lg transition-colors duration-500" style={navbarStyle}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* left */}
@@ -47,7 +43,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
               <div
                 className={`text-2xl font-extrabold tracking-tight bg-clip-text text-transparent 
-                ${darkMode ? "bg-gradient-to-r from-yellow-400 to-orange-400" : "bg-gradient-to-r from-indigo-500 to-purple-500"}`}
+                "} style={{color: '#C19A6B'}}`}
               >
                 📘
               </div>
@@ -57,13 +53,15 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-2">
               <NavLink
                 to="/home"
-                className={({ isActive }) => `${linkBase} ${isActive ? active : inactive}`}
+                className={linkBase}
+                style={({ isActive }) => isActive ? activeStyle : inactiveStyle}
               >
                 Home
               </NavLink>
               <NavLink
                 to="/mybooks"
-                className={({ isActive }) => `${linkBase} ${isActive ? active : inactive}`}
+                className={linkBase}
+                style={({ isActive }) => isActive ? activeStyle : inactiveStyle}
               >
                 My Books
               </NavLink>
@@ -75,20 +73,21 @@ const Navbar = () => {
             <button
               onClick={toggleDarkMode}
               aria-label="Toggle theme"
-              className={`p-2 rounded-full ${buttonBg} transform transition-all duration-500 hover:rotate-12`}
+              className="p-2 rounded-full transform transition-all duration-500 hover:rotate-12"
+              style={buttonStyle}
             >
               {darkMode ? (
-                <SunIcon className="h-6 w-6 text-yellow-300" />
+                <SunIcon className="h-6 w-6" style={{color: '#C19A6B'}} />
               ) : (
-                <MoonIcon className="h-6 w-6 text-indigo-500" />
+                <MoonIcon className="h-6 w-6" style={{color: '#C19A6B'}} />
               )}
             </button>
 
             {user && (
               <button
                 onClick={handleLogout}
-                className={`hidden sm:inline-flex px-4 py-2 rounded-lg font-medium transform hover:-translate-y-0.5 transition 
-                ${darkMode ? "bg-yellow-500 hover:bg-yellow-600 text-gray-900" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
+                className="hidden sm:inline-flex px-4 py-2 rounded-lg font-medium transform hover:-translate-y-0.5 transition"
+                style={{background: 'linear-gradient(to right, #C19A6B, #D4B17A)', color: '#3B2F2F'}}
               >
                 Logout
               </button>
@@ -98,7 +97,8 @@ const Navbar = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setOpen((v) => !v)}
-                className={`p-2 rounded-md ${buttonBg}`}
+                className="p-2 rounded-md"
+                style={buttonStyle}
                 aria-label="Toggle menu"
               >
                 {open ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
@@ -117,14 +117,16 @@ const Navbar = () => {
             <NavLink
               to="/home"
               onClick={() => setOpen(false)}
-              className={({ isActive }) => `px-3 py-2 rounded ${isActive ? active : inactive}`}
+              className="px-3 py-2 rounded"
+              style={({ isActive }) => isActive ? activeStyle : inactiveStyle}
             >
               Home
             </NavLink>
             <NavLink
               to="/mybooks"
               onClick={() => setOpen(false)}
-              className={({ isActive }) => `px-3 py-2 rounded ${isActive ? active : inactive}`}
+              className="px-3 py-2 rounded"
+              style={({ isActive }) => isActive ? activeStyle : inactiveStyle}
             >
               My Books
             </NavLink>
@@ -134,8 +136,8 @@ const Navbar = () => {
                   setOpen(false);
                   handleLogout();
                 }}
-                className={`w-full text-left px-3 py-2 rounded 
-                ${darkMode ? "bg-yellow-500 hover:bg-yellow-600 text-gray-900" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
+                className="w-full text-left px-3 py-2 rounded"
+                style={{background: 'linear-gradient(to right, #C19A6B, #D4B17A)', color: '#3B2F2F'}}
               >
                 Logout
               </button>

@@ -26,7 +26,7 @@ const LoginPage = () => {
   return (
     <div style={styles.container}>
       <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Login</h2>
+        <h2 style={styles.heading}>Login</h2>
         {error && <p style={styles.error}>{error}</p>}
         <input
           type="text"
@@ -58,36 +58,53 @@ const styles = {
     height: "100vh",
     justifyContent: "center",
     alignItems: "center",
-    background: "#f0f2f5",
+    background: "#3B2F2F",
   },
   form: {
-    background: "#fff",
+    background: "linear-gradient(to bottom right, #2D2525, #3B2F2F)",
     padding: 30,
-    borderRadius: 8,
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+    borderRadius: 12,
+    boxShadow: "0 25px 50px -12px rgba(193,154,107,0.25)",
     width: 300,
     display: "flex",
     flexDirection: "column",
+    border: "1px solid rgba(193,154,107,0.3)",
   },
   input: {
     marginBottom: 15,
-    padding: 10,
+    padding: 12,
     fontSize: 16,
-    borderRadius: 4,
-    border: "1px solid #ccc",
+    borderRadius: 8,
+    border: "1px solid rgba(193,154,107,0.4)",
+    background: "#2D2525",
+    color: "#FAF3E0",
+    fontFamily: "Inter, sans-serif",
   },
   button: {
-    padding: 10,
-    background: "#007bff",
-    color: "#fff",
+    padding: 12,
+    background: "linear-gradient(to right, #C19A6B, #D4B17A)",
+    color: "#3B2F2F",
     border: "none",
-    borderRadius: 4,
+    borderRadius: 8,
     cursor: "pointer",
     fontSize: 16,
+    fontWeight: "600",
+    fontFamily: "Poppins, sans-serif",
+    boxShadow: "0 10px 25px -5px rgba(193,154,107,0.4)",
+    transition: "all 0.3s ease",
   },
   error: {
-    color: "red",
+    color: "#C19A6B",
     marginBottom: 10,
+    fontFamily: "Inter, sans-serif",
+  },
+  heading: {
+    color: "#FAF3E0",
+    marginBottom: 20,
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "700",
+    fontFamily: "Poppins, sans-serif",
   },
 };
 

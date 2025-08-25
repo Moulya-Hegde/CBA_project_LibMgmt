@@ -101,13 +101,8 @@ const Navbar = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-3">
-            {/* Notifications */}
-            <div className="relative">
-              <button className={`p-2 rounded-lg transition-all duration-200 ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-100'}`}>
-                <BellIcon className="w-5 h-5" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
-              </button>
-            </div>
+            
+            
 
             {/* User Badge */}
             {user && (

@@ -2,10 +2,11 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // Backend API base
+  baseURL: `${import.meta.env.VITE_API_URL}/api`, // Backend API base
   headers: {
     "Content-Type": "application/json",
   },
+  withCredentials: true,
 });
 
 const api = {
@@ -36,7 +37,12 @@ const api = {
   addUser: (user) => API.post("/users", user),
   updateUser: (id, updatedUser) => API.put(`/users/${id}`, updatedUser),
   deleteUser: (id) => API.delete(`/users/${id}`),
-  loginUser: (credentials) => API.post("/users/login", credentials),
+  loginUser: (credentials) => API.post("/auth/login", credentials),
+  registerUser: (data) => API.post("/auth/register", data),
+
+  // New endpoints
+  getCurrentUser: () => API.get("/auth/me"),  
+  logoutUser: () => API.post("/auth/logout"),
 };
 
 export default api;
